@@ -12,9 +12,9 @@ name: 斐讯k3路由器版本1.0
 on:
   schedule:
     - cron: 0 20 * * *
-  # push:
-  #   branches: 
-  #     - master
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -99,9 +99,8 @@ jobs:
 
           # 编译斐讯K3路由器固件:
           cat >> .config <<EOF
-          CONFIG_TARGET_x86=y
-          CONFIG_TARGET_x86_64=y
-          CONFIG_TARGET_x86_64_Generic=y
+          CONFIG_TARGET_bcm53xx=y
+          CONFIG_TARGET_bcm53xx_DEVICE_phicomm-k3=y
           EOF
 
           # 固件压缩:
